@@ -126,16 +126,22 @@ let temp1 = currencyNameTo.textContent;
 let temp2 = currencyNameFrom.textContent;
 let temp3 = document.querySelector(".currency__button--from img").src;
 let temp4 = document.querySelector(".currency__button--to img").src;
+let temp5 = document.querySelector(".currency__from .currency__input").value;
+let temp6 = document.querySelector(".currency__to .currency__input").value;
 
 replaceCurrencyButton.addEventListener("click", () => {
   document.querySelector(".currency__button--from img").src = temp4;
   document.querySelector(".currency__button--to img").src = temp3;
   currencyNameFrom.textContent = temp1;
   currencyNameTo.textContent = temp2;
+  document.querySelector(".currency__from .currency__input").value = temp6;
+  document.querySelector(".currency__to .currency__input").value = temp5;
   temp1 = currencyNameTo.textContent;
   temp2 = currencyNameFrom.textContent;
   temp3 = document.querySelector(".currency__button--from img").src;
   temp4 = document.querySelector(".currency__button--to img").src;
+  temp5 = document.querySelector(".currency__from .currency__input").value;
+  temp6 = document.querySelector(".currency__to .currency__input").value;
 });
 
 // selecting currency by clicking on country item
