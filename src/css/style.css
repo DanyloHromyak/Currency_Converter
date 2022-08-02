@@ -1,0 +1,352 @@
+/* ===== GLOBAL STYLES ===== */
+:root {
+  /* --color-primary: #2234ae; */
+  /* --color-secondary: #191714; */
+  --placeholder-color: hsl(0, 0%, 65%);
+  --placeholder-color-darken: hsl(0, 0%, 55%);
+  --bg-primary: hsl(219, 25%, 14%);
+  --bg-primary--light: hsl(219, 25%, 25%);
+  --color-primary: hsl(0, 0%, 100%);
+  --color-primary-darken: hsl(0, 0%, 95%);
+  --color-neutral-800: hsl(0, 0%, 90%);
+  --color-secondary: #6b8cff;
+  --color-secondary-darken: #405cc2;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+::selection {
+  color: #fff;
+  background: var(--color-secondary);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--color-primary); 
+}
+
+.container {
+  width: min(100%, 900px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* ----- GLOBAL STYLES ----- */
+
+/* ===== HEADER ===== */
+
+.header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  color: #fff;
+}
+
+h1 {
+  margin: 0 auto;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* ----- HEADER ----- */
+
+/* ===== MAIN ===== */
+.main {
+  width: min(500px, 100%);
+  padding: 30px;
+  border-radius: 7px;
+}
+
+.currency__from {
+  position: relative;
+}
+
+.currency__button {
+  position: relative;
+  margin-bottom: 10px;
+  min-width: 100px;
+  min-height: 35px;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.currency__button--to {
+  margin-top: 50px;
+}
+
+.currency {
+  position: relative;
+}
+
+.currency::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  height: 1px;
+  width: 100%;
+  background-color: var(--bg-primary--light);
+}
+
+.currency__button:focus, .currency__button:hover {
+  outline: none;
+  background-color: var(--bg-primary--light);
+  color: var(--color-secondary);
+}
+
+.currency__input {
+  width: 100%;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  padding: 0px 0 0px 10px;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 2.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.currency__input:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+.currency-sign__name {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  border-radius: 5px;
+}
+
+.currency__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 0;
+}
+
+.fa-exchange-alt {
+  position: absolute;
+  z-index: 1;
+  left: 75%;
+  bottom: -60px;
+  font-size: 2em;
+  background-color: var(--color-secondary);
+  padding: 18px;
+  transform: rotate(90deg);
+  border-radius: 50%;
+}
+
+.fa-exchange-alt:hover, .fa-exchange-alt:focus {
+  outline: none;
+  background-color: var(--color-secondary-darken);
+}
+
+.convert-btn {
+  width: 100%;
+  padding: 25px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 1.25em;
+  margin-top: 30px;
+}
+
+.convert-btn:hover, .convert-btn:focus {
+  outline: none;
+  background-color: var(--color-secondary-darken);
+}
+
+/* ----- MAIN ----- */
+
+/* ===== FOOTER ===== */
+.footer {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+/* ----- FOOTER ----- */
+
+/* ===== MODAL ===== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary-darken);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+  overflow: auto;
+}
+
+.modal__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.modal__content {
+  width: 100%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal__search {
+  width: min(calc(100% - 20px), 500px);
+  background-color: var(--color-primary);
+  color: var(--placeholder-color-darken);
+  font-size: 1em;
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 7px 5px 20px -3px #FFC7C5;
+  letter-spacing: 0.05em;
+}
+
+.modal__search:focus, .modal__search:hover {
+  outline: none;
+  box-shadow: 7px 5px 20px 8px #FFC7C5;
+  transition: 400ms ease-in-out; 
+}
+
+.modal__search:not(:focus), .modal__search:not(:hover) {
+  transition: 300ms linear; 
+}
+
+.modal__search::placeholder {
+  color: var(--placeholder-color);
+}
+
+.modal__country-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.modal__sort-first-letter > * {
+  margin-bottom: 15px;
+}
+
+.modal__sorted-items {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.first-letter {
+  color: var(--placeholder-color);
+  margin: 0 0 15px 20px;
+  font-size: 1.25em;
+}
+
+.modal__country-item {
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 20px;
+  background-color: var(--color-primary);
+  color: #000;
+}
+
+.modal__country-item:not(:last-child) {
+  border-bottom: 1px solid var(--color-neutral-800);
+}
+
+.modal__country-flag {
+  width: 32px;
+  height: 20px;
+  background-color: var(--color-neutral-800);
+  margin-right: 10px;
+}
+
+@media (min-width: 425px) {
+  .modal__country-list {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 15px;
+  }
+  .modal__sort-first-letter {
+    margin-right: 30px;
+  }
+  .modal__sort-first-letter:nth-child(even) {
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal__country-list {
+    grid-template-columns: repeat(4, 1fr);   
+    padding: 0 50px;
+  }
+  .modal__sort-first-letter:nth-child(even) {
+    margin-right: 30px;
+  }
+}
+
+/* ----- MODAL ----- */
