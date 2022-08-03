@@ -100,10 +100,10 @@ const search = document.querySelector("#searchCountry");
 const countryItems = document.querySelectorAll(".modal__country-item");
 
 search.addEventListener("keyup", (e) => {
-  const searchValue = e.target.value.toLowerCase();
+  const searchValue = e.target.value.toLowerCase().trim();
   countryItems.forEach((item) => {
     const countryName = item.querySelector(".modal__country-code").innerHTML;
-    if (countryName.trim().toLowerCase().indexOf(searchValue) !== -1) {
+    if (countryName.toLowerCase().indexOf(searchValue) !== -1) {
       item.style.display = "block";
     } else {
       item.style.display = "none";
@@ -128,12 +128,12 @@ search.addEventListener("keyup", (e) => {
 });
 
 // swap currencies on click on replaceCurrencyButton
-let temp1 = currencyNameTo.textContent;
-let temp2 = currencyNameFrom.textContent;
-let temp3 = document.querySelector(".currency__button--from img").src;
-let temp4 = document.querySelector(".currency__button--to img").src;
 
 replaceCurrencyButton.addEventListener("click", () => {
+  let temp1 = currencyNameTo.textContent;
+  let temp2 = currencyNameFrom.textContent;
+  let temp3 = document.querySelector(".currency__button--from img").src;
+  let temp4 = document.querySelector(".currency__button--to img").src;  
   document.querySelector(".currency__button--from img").src = temp4;
   document.querySelector(".currency__button--to img").src = temp3;
   currencyNameFrom.textContent = temp1;
@@ -158,16 +158,12 @@ countryItems.forEach((item) => {
     const countryCode = e.target.querySelector(".modal__country-code").textContent;
     if (whichButtonClicked === "from") {
       currencyNameFrom.textContent = countryCode;
-      temp2 = countryCode;
       flag = document.querySelector(".currency__button--from img");
       flag.src = `https://flagcdn.com/48x36/${countryList[countryCode].toLowerCase()}.png`;
-      temp3 = flag.src;
     } else if (whichButtonClicked === "to") {
       currencyNameTo.textContent = countryCode;
-      temp1 = countryCode;
       flag = document.querySelector(".currency__button--to img");
       flag.src = `https://flagcdn.com/48x36/${countryList[countryCode].toLowerCase()}.png`;
-      temp4 = flag.src;
     }
     whichButtonClicked = null;
     modal.style.display = "none";
