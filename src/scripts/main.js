@@ -173,7 +173,6 @@ countryItems.forEach((item) => {
 
 
 // API call
-
 const api_key = "f2f09b7262300fe483f42e38";
 
 function getExchangeRate() {
@@ -184,7 +183,7 @@ function getExchangeRate() {
     .then((response) => response.json())
     .then((result) => {
       let fromValue = result.conversion_rates[currencyNameTo.textContent]; 
-      let totalExRate = (amount * fromValue).toFixed(2); // multiplying user entered value with selected TO currency rate
+      let totalExRate = (amount * fromValue).toFixed(2); 
       exchangeRate.value = totalExRate;
     })
     .catch(() => {
