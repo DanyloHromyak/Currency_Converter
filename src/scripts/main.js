@@ -2,6 +2,7 @@ const replaceCurrencyButton = document.querySelector(".fa-exchange-alt");
 const modal = document.querySelector(".modal");
 const closeModal = document.querySelector(".modal__close");
 const exchangeRate = document.querySelector("#exchangeRate");
+const convertButton = document.querySelector(".convert-btn");
 const currencyNameFrom = document.querySelector(".currency__name--from");
 const currencyNameTo = document.querySelector(".currency__name--to");
 const currencyButtonFrom = document.querySelector(".currency__button--from");
@@ -52,7 +53,6 @@ const addFirstLetter = () => {
     "T",
     "U",
     "V",
-    "W",
     "X",
     "Y",
     "Z",
@@ -167,9 +167,36 @@ countryItems.forEach((item) => {
     }
     whichButtonClicked = null;
     modal.style.display = "none";
+    getExchangeRate();
   })
 })
 
 
 // API call
-const key = "h4256kPseUByJVf89bcBm5E6957LTq";
+
+const api_key = "f2f09b7262300fe483f42e38";
+
+function getExchangeRate() {
+  const amount = document.querySelector("#amount").value;
+  exchangeRate.value = "Загрузка...";
+  let url = `https://v6.exchangerate-api.com/v6/${api_key}/latest/${currencyNameFrom.textContent}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((result) => {
+      let fromValue = result.conversion_rates[currencyNameTo.textContent]; 
+      let totalExRate = (amount * fromValue).toFixed(2); // multiplying user entered value with selected TO currency rate
+      exchangeRate.value = totalExRate;
+    })
+    .catch(() => {
+      exchangeRate.value = "Упс... Помилка";
+    });
+}
+
+convertButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  getExchangeRate();
+});
+
+window.addEventListener("load", () => {
+  getExchangeRate();
+});
