@@ -1,5 +1,4 @@
 const replaceCurrencyButton = document.querySelector(".fa-exchange-alt");
-const currencyButton = document.querySelectorAll(".currency__button");
 const modal = document.querySelector(".modal");
 const closeModal = document.querySelector(".modal__close");
 const exchangeRate = document.querySelector("#exchangeRate");
@@ -101,45 +100,54 @@ const search = document.querySelector("#searchCountry");
 const countryItems = document.querySelectorAll(".modal__country-item");
 
 search.addEventListener("keyup", (e) => {
-  const searchValue = e.target.value.toLowerCase().trim();
+  const searchValue = e.target.value.toLowerCase();
   countryItems.forEach((item) => {
-    const countryCode = item.querySelector(".modal__country-code").innerHTML;
-    const countryName = countryList[countryCode].toLowerCase();
-    if (countryName.indexOf(searchValue) !== -1) {
+    const countryName = item.querySelector(".modal__country-code").innerHTML;
+    if (countryName.trim().toLowerCase().indexOf(searchValue) !== -1) {
       item.style.display = "block";
     } else {
       item.style.display = "none";
     }
-    const divFirstLetter = document.querySelectorAll(".modal__sort-first-letter");
+  });
+  const divFirstLetter = document.querySelectorAll(".modal__sort-first-letter");
     divFirstLetter.forEach((letter) => {
-      if (letter.querySelector(".modal__country-item").style.display === "none") {
+      const countryItems = letter.querySelectorAll(".modal__country-item");
+      let allHidden = true;
+      countryItems.forEach((item) => {
+        if (item.style.display === "block") {
+          allHidden = false;
+        }
+      });
+      if (allHidden) {
         letter.style.display = "none";
-      } else {
+      }
+      if (!allHidden) {
         letter.style.display = "block";
       }
     })
-  });
-})
+});
 
 // swap currencies on click on replaceCurrencyButton
 let temp1 = currencyNameTo.textContent;
 let temp2 = currencyNameFrom.textContent;
 let temp3 = document.querySelector(".currency__button--from img").src;
 let temp4 = document.querySelector(".currency__button--to img").src;
-let temp5 = document.querySelector(".currency__from .currency__input").value;
-let temp6 = document.querySelector(".currency__to .currency__input").value;
 
 replaceCurrencyButton.addEventListener("click", () => {
   document.querySelector(".currency__button--from img").src = temp4;
   document.querySelector(".currency__button--to img").src = temp3;
   currencyNameFrom.textContent = temp1;
-  currencyNameTo.textContent = temp2;
-  document.querySelector(".currency__from .currency__input").value = temp6;
-  document.querySelector(".currency__to .currency__input").value = temp5;
+  currencyNameTo.textContent = temp2; 
   temp1 = currencyNameTo.textContent;
   temp2 = currencyNameFrom.textContent;
   temp3 = document.querySelector(".currency__button--from img").src;
   temp4 = document.querySelector(".currency__button--to img").src;
+
+  // INPUT VALUES
+  let temp5 = document.querySelector(".currency__from .currency__input").value;
+  let temp6 = document.querySelector(".currency__to .currency__input").value;
+  document.querySelector(".currency__from .currency__input").value = temp6;
+  document.querySelector(".currency__to .currency__input").value = temp5;
   temp5 = document.querySelector(".currency__from .currency__input").value;
   temp6 = document.querySelector(".currency__to .currency__input").value;
 });
@@ -165,3 +173,7 @@ countryItems.forEach((item) => {
     modal.style.display = "none";
   })
 })
+
+
+// API call
+const key = "h4256kPseUByJVf89bcBm5E6957LTq";
