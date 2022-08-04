@@ -94,11 +94,11 @@ h1 {
 
 /* THEME CHANGER */
 .theme-switch {
-  --theme-width: 100px;
+  --theme-width: 70px;
 
   display: inline-block;
   position: relative;
-  height: 40px;
+  height: 30px;
   width: var(--theme-width);  
 }
 
@@ -118,7 +118,7 @@ h1 {
 }
 
 .slider:before {
-  --slider-before-width: 36px;
+  --slider-before-width: 26px;
   --bottom: 2px;
   --top: 2px;
 
@@ -126,7 +126,7 @@ h1 {
   position: absolute;
   background-color: var(--bg-primary);
   bottom: var(--bottom);
-  height: 36px;
+  height: 26px;
   width: var(--slider-before-width);
   left: var(--top);
   transition: 500ms;
@@ -134,7 +134,7 @@ h1 {
 
 #checkbox:checked + .slider {
   background-color: var(--color-primary);
-  box-shadow: 0px 10px 20px var(--color-primary-darken);
+  box-shadow: 0px 6px 12px var(--color-primary-darken);
 }
 
 #checkbox:checked + .slider:before {
@@ -143,8 +143,8 @@ h1 {
 }
 
 .slider {
-  border-radius: 80px;
-  box-shadow: 0px 10px 20px var(--color-secondary-darken);
+  border-radius: 20px;
+  box-shadow: 0px 6px 12px var(--color-secondary-darken);
 }
 
 .slider:before {
