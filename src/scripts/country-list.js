@@ -39,7 +39,7 @@ let countryList = {
   EGP: "EG",
   ERN: "ER",
   ETB: "ET",
-  EUR: "FR",
+  EUR: "EU",
   FJD: "FJ",
   FKP: "FK",
   FOK: "FO",

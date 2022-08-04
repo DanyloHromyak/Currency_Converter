@@ -131,26 +131,24 @@ search.addEventListener("keyup", (e) => {
 // swap currencies on click on replaceCurrencyButton
 
 replaceCurrencyButton.addEventListener("click", () => {
+  // swap currencies names
   let temp1 = currencyNameTo.textContent;
-  let temp2 = currencyNameFrom.textContent;
-  let temp3 = document.querySelector(".currency__button--from img").src;
-  let temp4 = document.querySelector(".currency__button--to img").src;  
-  document.querySelector(".currency__button--from img").src = temp4;
-  document.querySelector(".currency__button--to img").src = temp3;
+  currencyNameTo.textContent = currencyNameFrom.textContent;
   currencyNameFrom.textContent = temp1;
-  currencyNameTo.textContent = temp2; 
-  temp1 = currencyNameTo.textContent;
-  temp2 = currencyNameFrom.textContent;
-  temp3 = document.querySelector(".currency__button--from img").src;
-  temp4 = document.querySelector(".currency__button--to img").src;
+
+  // change flag
+  const fromFlag = document.querySelector(".currency__button--from img");
+  const toFlag = document.querySelector(".currency__button--to img");
+  let temp2 = fromFlag.src;
+  fromFlag.src = toFlag.src;
+  toFlag.src = temp2;
 
   // INPUT VALUES
-  let temp5 = document.querySelector(".currency__from .currency__input").value;
-  let temp6 = document.querySelector(".currency__to .currency__input").value;
-  document.querySelector(".currency__from .currency__input").value = temp6;
-  document.querySelector(".currency__to .currency__input").value = temp5;
-  temp5 = document.querySelector(".currency__from .currency__input").value;
-  temp6 = document.querySelector(".currency__to .currency__input").value;
+  const inputTo = document.querySelector(".currency__to .currency__input");
+  const inputFrom = document.querySelector(".currency__from .currency__input");
+  let temp3 = inputTo.value;
+  inputTo.value = inputFrom.value;
+  inputFrom.value = temp3;
 });
 
 // selecting currency by clicking on country item
