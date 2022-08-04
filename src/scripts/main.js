@@ -53,6 +53,7 @@ const addFirstLetter = () => {
     "T",
     "U",
     "V",
+    "W",
     "X",
     "Y",
     "Z",
