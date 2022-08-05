@@ -352,6 +352,7 @@ h1 {
 .modal__sorted-items {
   display: grid;
   grid-template-columns: 1fr;
+  box-shadow: 0px 15px 30px #FFC7C5;
 }
 
 .first-letter {
