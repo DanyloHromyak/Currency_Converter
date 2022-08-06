@@ -48,7 +48,7 @@ input[type=number] {
 }
 
 ::selection {
-  color: var(--bg-primary--light);
+  color: var(--color-neutral-800);
   background: var(--color-secondary);
 }
 
