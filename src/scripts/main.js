@@ -172,7 +172,7 @@ countryItems.forEach((item) => {
 
 
 // API call
-const api_key = "f2f09b7262300fe483f42e38";
+// const api_key = "f2f09b7262300fe483f42e38";
 
 function getExchangeRate() {
   const amount = document.querySelector("#amount").value;
