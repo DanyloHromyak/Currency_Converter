@@ -60,11 +60,11 @@ const addFirstLetter = () => {
   ];
   firstLetters.forEach((letter) => {
     const html = `
-    <div class="modal__sort-first-letter">
+    <ul class="modal__sort-first-letter">
       <p class="first-letter">${letter}</p>
-      <ul class="modal__sorted-items">
-      </ul>
-    </div>
+      <div class="modal__sorted-items">
+      </div>
+    </ul>
     `;
     countries.insertAdjacentHTML("beforeend", html);
   });
@@ -154,7 +154,7 @@ replaceCurrencyButton.addEventListener("click", () => {
 // selecting currency by clicking on country item
 countryItems.forEach((item) => {
   item.addEventListener("click", (e) => {
-    const countryCode = e.target.querySelector(".modal__country-code").textContent;
+    const countryCode = e.target.closest(".modal__country-item").querySelector(".modal__country-code").textContent;
     if (whichButtonClicked === "from") {
       currencyNameFrom.textContent = countryCode;
       flag = document.querySelector(".currency__button--from img");
