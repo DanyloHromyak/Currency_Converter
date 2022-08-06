@@ -14,7 +14,7 @@
 [data-theme=dark] {
   --bg-primary: #6b8cff;
   --bg-primary--light: #405cc2;
-  --color-secondary: hsl(219, 25%, 14%);
+  --color-secondary: hsl(219, 25%, 20%);
   --color-secondary-darken: hsl(219, 25%, 25%);
 }
 
@@ -198,7 +198,8 @@ h1 {
   content: "";
   height: 1px;
   width: 100%;
-  background-color: var(--bg-primary--light);
+  background-color: var(--color-neutral-800);
+  opacity: 20%;
 }
 
 .currency__button:focus, .currency__button:hover {
