@@ -143,12 +143,7 @@ replaceCurrencyButton.addEventListener("click", () => {
   fromFlag.src = toFlag.src;
   toFlag.src = temp2;
 
-  // INPUT VALUES
-  const inputTo = document.querySelector(".currency__to .currency__input");
-  const inputFrom = document.querySelector(".currency__from .currency__input");
-  let temp3 = inputTo.value;
-  inputTo.value = inputFrom.value;
-  inputFrom.value = temp3;
+  getExchangeRate();
 });
 
 // selecting currency by clicking on country item
