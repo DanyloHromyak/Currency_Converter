@@ -14,7 +14,7 @@
 [data-theme=dark] {
   --bg-primary: #6b8cff;
   --bg-primary--light: #405cc2;
-  --color-secondary: hsl(219, 25%, 20%);
+  --color-secondary: hsl(219, 25%, 15%);
   --color-secondary-darken: hsl(219, 25%, 25%);
 }
 
@@ -50,6 +50,10 @@ input[type=number] {
 ::selection {
   color: var(--color-neutral-800);
   background: var(--color-secondary);
+}
+
+button, .fa-exchange-alt {
+  cursor: pointer;
 }
 
 body {
@@ -130,6 +134,24 @@ h1 {
   width: var(--slider-before-width);
   left: var(--top);
   transition: 500ms;
+}
+
+.fa-cloud-moon {
+  display: none;
+  position: absolute;
+  font-size: 1.5em;
+  top: 3px;
+  right: 5px;
+  color: var(--bg-primary);
+}
+
+.fa-sun {
+  display: none;
+  position: absolute;
+  font-size: 1.5em;
+  top: 3px;
+  left: 5px;
+  color: var(--color-secondary);
 }
 
 #checkbox:checked + .slider {
@@ -226,10 +248,13 @@ h1 {
 
 .currency-sign__name {
   position: absolute;
-  top: 0;
+  top: 5px;
   bottom: 0;
   display: flex;
   align-items: center;
+  justify-content: end;
+  left: -50px;
+  width: 60px;
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--color-primary);
@@ -374,10 +399,19 @@ h1 {
   border-bottom: 1px solid var(--color-neutral-800);
 }
 
+.modal__country-item:hover, .modal__country-item:focus {
+  background-color: rgba(255, 199, 197, .3);
+  padding: 15px 30px;
+  transition: 200ms;
+}
+
+.modal__country-item:not(:hover), .modal__country-item:not(:focus) {
+  transition: 200ms;
+}
+
 .modal__country-flag {
   width: 32px;
   height: 20px;
-  background-color: var(--color-neutral-800);
   margin-right: 10px;
 }
 

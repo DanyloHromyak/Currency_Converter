@@ -57,7 +57,10 @@
         <div class="theme-switch">
           <label class="switch-theme" for="checkbox">
             <input type="checkbox" id="checkbox">
-            <div class="slider"></div>
+            <div class="slider">
+              <i class="fa-solid fa-cloud-moon"></i>
+              <i class="fa-solid fa-sun"></i>
+            </div>
           </label>
         </div>
       </header>
@@ -85,7 +88,7 @@
                 name="amount"
                 value="1"
               />
-              <span class="currency-sign__name">$</span>
+              <span id="signFrom" class="currency-sign__name">$</span>
             </div>
           </div>
 
@@ -104,7 +107,7 @@
               <i class="fa-solid fa-caret-down"></i>
             </button>
             <div class="currency-sign" style="position: relative">
-              <span class="currency-sign__name">$</span>
+              <span id="signTo" class="currency-sign__name">₴</span>
               <input
                 class="currency__input"
                 id="exchangeRate"
