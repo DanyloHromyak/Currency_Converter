@@ -70,6 +70,9 @@ const addFirstLetter = () => {
   });
 };
 
+const signFrom = document.querySelector("#signFrom");
+const signTo = document.querySelector("#signTo");
+
 const addCountries = () => {
   const countryCodes = Object.keys(countryList);
 
@@ -77,7 +80,7 @@ const addCountries = () => {
     const html = `
     <li class="modal__country-item">
       <img
-        src="https://flagcdn.com/48x36/${countryList[code].toLowerCase()}.png"
+        src="https://flagcdn.com/48x36/${countryList[code][0].toLowerCase()}.png"
         class="modal__country-flag"
         />
       <span class="modal__country-code">${code}</span>
@@ -152,12 +155,14 @@ countryItems.forEach((item) => {
     const countryCode = e.target.closest(".modal__country-item").querySelector(".modal__country-code").textContent;
     if (whichButtonClicked === "from") {
       currencyNameFrom.textContent = countryCode;
+      signFrom.textContent = countryList[countryCode][1];
       flag = document.querySelector(".currency__button--from img");
-      flag.src = `https://flagcdn.com/48x36/${countryList[countryCode].toLowerCase()}.png`;
+      flag.src = `https://flagcdn.com/48x36/${countryList[countryCode][0].toLowerCase()}.png`;
     } else if (whichButtonClicked === "to") {
       currencyNameTo.textContent = countryCode;
+      signTo.textContent = countryList[countryCode][1];
       flag = document.querySelector(".currency__button--to img");
-      flag.src = `https://flagcdn.com/48x36/${countryList[countryCode].toLowerCase()}.png`;
+      flag.src = `https://flagcdn.com/48x36/${countryList[countryCode][0].toLowerCase()}.png`;
     }
     whichButtonClicked = null;
     modal.style.display = "none";
@@ -197,23 +202,35 @@ window.addEventListener("load", () => {
 // dark and light themes
 const toggleThemes = document.querySelector("#checkbox");
 const currentTheme = localStorage.getItem("theme");
+const sun = document.querySelector(".fa-sun");
+const moon = document.querySelector(".fa-cloud-moon");
+sun.style.display = "none";
+moon.style.display = "block";
 
 if (currentTheme) {
   document.documentElement.setAttribute("data-theme", currentTheme);
-
+  
   if (currentTheme === "dark") {
     toggleThemes.checked = true;
+    sun.style.display = "block";
+    moon.style.display = "none";
   }
 }
+
+
 
 function switchTheme(e) {
   if (e.target.checked) {
     document.documentElement.setAttribute('data-theme', 'dark');
     localStorage.setItem("theme", "dark");
+    moon.style.display = "none";
+    sun.style.display = "block";
   } else {
     document.documentElement.setAttribute('data-theme', 'light');
     localStorage.setItem("theme", "light");
+    moon.style.display = "block";
+    sun.style.display = "none";
   }
 }
-    
-toggleThemes.addEventListener("change", switchTheme, false);
+
+toggleThemes.addEventListener("change", switchTheme, false)
