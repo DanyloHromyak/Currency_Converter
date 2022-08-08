@@ -146,6 +146,11 @@ replaceCurrencyButton.addEventListener("click", () => {
   fromFlag.src = toFlag.src;
   toFlag.src = temp2;
 
+  // change sign
+  let temp3 = signTo.textContent;
+  signTo.textContent = signFrom.textContent;
+  signFrom.textContent = temp3;
+
   getExchangeRate();
 });
 
@@ -199,6 +204,8 @@ window.addEventListener("load", () => {
   getExchangeRate();
 });
 
+
+
 // dark and light themes
 const toggleThemes = document.querySelector("#checkbox");
 const currentTheme = localStorage.getItem("theme");
@@ -216,8 +223,6 @@ if (currentTheme) {
     moon.style.display = "none";
   }
 }
-
-
 
 function switchTheme(e) {
   if (e.target.checked) {

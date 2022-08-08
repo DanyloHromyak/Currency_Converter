@@ -125,6 +125,7 @@ let countryList = {
   SGD: ["SG", "$"],
   SHP: ["SH", "£"],
   SLE: ["SL", "Le"],
+  SLL: ["SL", "Le"],  
   SOS: ["SO", "S"],
   SRD: ["SR", "$"],
   SSP: ["SS", "£"],
