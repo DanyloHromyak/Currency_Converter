@@ -24,7 +24,6 @@
 
 *, *:before, *:after {
   --webkit-tap-highlight-color: transparent;
-  font-family: "Poppins", sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -54,6 +53,7 @@ button, .fa-exchange-alt {
 body {
   min-height: 100vh;
   background-color: var(--bg-primary);
+  font-family: 'Poppins', sans-serif;
   color: var(--color-primary); 
 }
 
