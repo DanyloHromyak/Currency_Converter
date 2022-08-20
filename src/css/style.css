@@ -135,7 +135,7 @@ h1 {
   display: none;
   position: absolute;
   font-size: 1.5em;
-  top: 3px;
+  top: 2px;
   right: 5px;
   color: var(--bg-primary);
 }

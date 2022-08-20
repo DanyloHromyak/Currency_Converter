@@ -182,13 +182,12 @@ const api_key = "f2f09b7262300fe483f42e38";
 function getExchangeRate() {
   const amount = document.querySelector("#amount").value;
   exchangeRate.value = "Загрузка...";
-  let url = `https://v6.exchangerate-api.com/v6/${api_key}/latest/${currencyNameFrom.textContent}`;
+  let url = `https://v6.exchangerate-api.com/v6/${api_key}/pair/${currencyNameFrom.textContent}/${currencyNameTo.textContent}/${amount}`;
   fetch(url)
     .then((response) => response.json())
     .then((result) => {
-      let fromValue = result.conversion_rates[currencyNameTo.textContent]; 
-      let totalExRate = (amount * fromValue).toFixed(2); 
-      exchangeRate.value = totalExRate;
+      console.log(result);
+      exchangeRate.value = result.conversion_result.toFixed(2);
     })
     .catch(() => {
       exchangeRate.value = "Упс... Помилка";
