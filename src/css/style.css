@@ -23,6 +23,7 @@
 }
 
 *, *:before, *:after {
+  --webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -40,13 +41,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
 ::selection {
   color: var(--color-neutral-800);
   background: var(--color-secondary);
@@ -59,6 +53,7 @@ button, .fa-exchange-alt {
 body {
   min-height: 100vh;
   background-color: var(--bg-primary);
+  font-family: 'Poppins', sans-serif;
   color: var(--color-primary); 
 }
 
@@ -140,7 +135,7 @@ h1 {
   display: none;
   position: absolute;
   font-size: 1.5em;
-  top: 3px;
+  top: 2px;
   right: 5px;
   color: var(--bg-primary);
 }

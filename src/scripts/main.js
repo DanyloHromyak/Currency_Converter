@@ -182,7 +182,7 @@ const amount = document.querySelector("#amount");
 
 function getExchangeRate() {
   exchangeRate.value = "Загрузка...";
-  let url = `https://v6.exchangerate-api.com/v6/${api_key}/latest/${currencyNameFrom.textContent}`;
+  let url = `https://v6.exchangerate-api.com/v6/${api_key}/pair/${currencyNameFrom.textContent}/${currencyNameTo.textContent}/${amount}`;
   fetch(url)
     .then((response) => response.json())
     .then((result) => {
