@@ -80,7 +80,9 @@ const addCountries = () => {
     const html = `
     <li class="modal__country-item">
       <img
-        src="https://flagcdn.com/48x36/${countryList[code][0].toLowerCase()}.png"
+        src="https://flagcdn.com/48x36/${countryList[
+          code
+        ][0].toLowerCase()}.png"
         class="modal__country-flag"
         />
       <span class="modal__country-code">${code}</span>
@@ -114,21 +116,21 @@ search.addEventListener("keyup", (e) => {
     }
   });
   const divFirstLetter = document.querySelectorAll(".modal__sort-first-letter");
-    divFirstLetter.forEach((letter) => {
-      const countryItems = letter.querySelectorAll(".modal__country-item");
-      let allHidden = true;
-      countryItems.forEach((item) => {
-        if (item.style.display === "block") {
-          allHidden = false;
-        }
-      });
-      if (allHidden) {
-        letter.style.display = "none";
+  divFirstLetter.forEach((letter) => {
+    const countryItems = letter.querySelectorAll(".modal__country-item");
+    let allHidden = true;
+    countryItems.forEach((item) => {
+      if (item.style.display === "block") {
+        allHidden = false;
       }
-      if (!allHidden) {
-        letter.style.display = "block";
-      }
-    })
+    });
+    if (allHidden) {
+      letter.style.display = "none";
+    }
+    if (!allHidden) {
+      letter.style.display = "block";
+    }
+  });
 });
 
 // swap currencies on click on replaceCurrencyButton
@@ -157,37 +159,42 @@ replaceCurrencyButton.addEventListener("click", () => {
 // selecting currency by clicking on country item
 countryItems.forEach((item) => {
   item.addEventListener("click", (e) => {
-    const countryCode = e.target.closest(".modal__country-item").querySelector(".modal__country-code").textContent;
+    const countryCode = e.target
+      .closest(".modal__country-item")
+      .querySelector(".modal__country-code").textContent;
     if (whichButtonClicked === "from") {
       currencyNameFrom.textContent = countryCode;
       signFrom.textContent = countryList[countryCode][1];
       flag = document.querySelector(".currency__button--from img");
-      flag.src = `https://flagcdn.com/48x36/${countryList[countryCode][0].toLowerCase()}.png`;
+      flag.src = `https://flagcdn.com/48x36/${countryList[
+        countryCode
+      ][0].toLowerCase()}.png`;
     } else if (whichButtonClicked === "to") {
       currencyNameTo.textContent = countryCode;
       signTo.textContent = countryList[countryCode][1];
       flag = document.querySelector(".currency__button--to img");
-      flag.src = `https://flagcdn.com/48x36/${countryList[countryCode][0].toLowerCase()}.png`;
+      flag.src = `https://flagcdn.com/48x36/${countryList[
+        countryCode
+      ][0].toLowerCase()}.png`;
     }
     whichButtonClicked = null;
     modal.style.display = "none";
     getExchangeRate();
-  })
-})
-
+  });
+});
 
 // API call
 const api_key = "f2f09b7262300fe483f42e38";
-const amount = document.querySelector("#amount");
 
 function getExchangeRate() {
+  const amount = document.querySelector("#amount").value;
   exchangeRate.value = "Загрузка...";
   let url = `https://v6.exchangerate-api.com/v6/${api_key}/pair/${currencyNameFrom.textContent}/${currencyNameTo.textContent}/${amount}`;
   fetch(url)
     .then((response) => response.json())
     .then((result) => {
-      let fromValue = result.conversion_rates[currencyNameTo.textContent]; 
-      let totalExRate = (amount.value * fromValue).toFixed(2); 
+      let fromValue = result.conversion_rates[currencyNameTo.textContent];
+      let totalExRate = (amount.value * fromValue).toFixed(2);
       exchangeRate.value = totalExRate;
     })
     .catch(() => {
@@ -195,11 +202,11 @@ function getExchangeRate() {
     });
 }
 
-amount.addEventListener("keypress", () => {
-  if (event.key === "Enter") {
-    getExchangeRate()
-  }
-})
+// amount.addEventListener("keypress", () => {
+//   if (event.key === "Enter") {
+//     getExchangeRate()
+//   }
+// })
 
 convertButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -209,8 +216,6 @@ convertButton.addEventListener("click", (e) => {
 window.addEventListener("load", () => {
   getExchangeRate();
 });
-
-
 
 // dark and light themes
 const toggleThemes = document.querySelector("#checkbox");
@@ -222,7 +227,7 @@ moon.style.display = "block";
 
 if (currentTheme) {
   document.documentElement.setAttribute("data-theme", currentTheme);
-  
+
   if (currentTheme === "dark") {
     toggleThemes.checked = true;
     sun.style.display = "block";
@@ -232,16 +237,16 @@ if (currentTheme) {
 
 function switchTheme(e) {
   if (e.target.checked) {
-    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.setAttribute("data-theme", "dark");
     localStorage.setItem("theme", "dark");
     moon.style.display = "none";
     sun.style.display = "block";
   } else {
-    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.setAttribute("data-theme", "light");
     localStorage.setItem("theme", "light");
     moon.style.display = "block";
     sun.style.display = "none";
   }
 }
 
-toggleThemes.addEventListener("change", switchTheme, false)
+toggleThemes.addEventListener("change", switchTheme, false);
