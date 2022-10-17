@@ -193,20 +193,18 @@ function getExchangeRate() {
   fetch(url)
     .then((response) => response.json())
     .then((result) => {
-      let fromValue = result.conversion_rates[currencyNameTo.textContent];
-      let totalExRate = (amount.value * fromValue).toFixed(2);
-      exchangeRate.value = totalExRate;
+      exchangeRate.value = result.conversion_result.toFixed(2);
     })
     .catch(() => {
       exchangeRate.value = "Упс... Помилка";
     });
 }
 
-// amount.addEventListener("keypress", () => {
-//   if (event.key === "Enter") {
-//     getExchangeRate()
-//   }
-// })
+amount.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    getExchangeRate();
+  }
+});
 
 convertButton.addEventListener("click", (e) => {
   e.preventDefault();
