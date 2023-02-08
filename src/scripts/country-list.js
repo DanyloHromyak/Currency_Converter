@@ -1,4 +1,4 @@
-let countryList = {
+export let countryList = {
   AED: ["AE", "د.إ"],
   AFN: ["AF", "؋"],
   ALL: ["AL", "L"],
@@ -125,7 +125,7 @@ let countryList = {
   SGD: ["SG", "$"],
   SHP: ["SH", "£"],
   SLE: ["SL", "Le"],
-  SLL: ["SL", "Le"],  
+  SLL: ["SL", "Le"],
   SOS: ["SO", "S"],
   SRD: ["SR", "$"],
   SSP: ["SS", "£"],

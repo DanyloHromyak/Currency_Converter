@@ -1,3 +1,4 @@
+import { countryList } from "./country-list.js";
 const replaceCurrencyButton = document.querySelector(".fa-exchange-alt");
 const modal = document.querySelector(".modal");
 const closeModal = document.querySelector(".modal__close");
@@ -28,37 +29,11 @@ closeModal.addEventListener("click", () => {
 
 // ui of countries
 const countries = document.querySelector(".modal__country-list");
+const countryCodes = Object.keys(countryList);
 
 const addFirstLetter = () => {
-  const firstLetters = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
-  firstLetters.forEach((letter) => {
+  const firstLetters = [...new Set(countryCodes.map(code => code[0]))];
+  firstLetters.forEach(letter => {
     const html = `
     <ul class="modal__sort-first-letter">
       <p class="first-letter">${letter}</p>
@@ -74,9 +49,7 @@ const signFrom = document.querySelector("#signFrom");
 const signTo = document.querySelector("#signTo");
 
 const addCountries = () => {
-  const countryCodes = Object.keys(countryList);
-
-  countryCodes.forEach((code) => {
+  countryCodes.forEach(code => {
     const html = `
     <li class="modal__country-item">
       <img
@@ -89,10 +62,9 @@ const addCountries = () => {
     </li>
     `;
     const firstLetter = document.querySelectorAll(".first-letter");
-    firstLetter.forEach((letter) => {
-      if (code.charAt(0) === letter.innerHTML) {
-        const ul = letter.nextElementSibling;
-        ul.innerHTML += html;
+    firstLetter.forEach(letter => {
+      if (code.charAt(0) === letter.textContent) {
+        letter.nextElementSibling.insertAdjacentHTML("beforeend", html);
       }
     });
   });
@@ -105,9 +77,9 @@ addCountries();
 const search = document.querySelector("#searchCountry");
 const countryItems = document.querySelectorAll(".modal__country-item");
 
-search.addEventListener("keyup", (e) => {
+search.addEventListener("keyup", e => {
   const searchValue = e.target.value.toLowerCase().trim();
-  countryItems.forEach((item) => {
+  countryItems.forEach(item => {
     const countryName = item.querySelector(".modal__country-code").innerHTML;
     if (countryName.toLowerCase().indexOf(searchValue) !== -1) {
       item.style.display = "block";
@@ -116,10 +88,10 @@ search.addEventListener("keyup", (e) => {
     }
   });
   const divFirstLetter = document.querySelectorAll(".modal__sort-first-letter");
-  divFirstLetter.forEach((letter) => {
+  divFirstLetter.forEach(letter => {
     const countryItems = letter.querySelectorAll(".modal__country-item");
     let allHidden = true;
-    countryItems.forEach((item) => {
+    countryItems.forEach(item => {
       if (item.style.display === "block") {
         allHidden = false;
       }
@@ -157,8 +129,8 @@ replaceCurrencyButton.addEventListener("click", () => {
 });
 
 // selecting currency by clicking on country item
-countryItems.forEach((item) => {
-  item.addEventListener("click", (e) => {
+countryItems.forEach(item => {
+  item.addEventListener("click", e => {
     const countryCode = e.target
       .closest(".modal__country-item")
       .querySelector(".modal__country-code").textContent;
@@ -191,8 +163,8 @@ function getExchangeRate() {
   exchangeRate.value = "Загрузка...";
   let url = `https://v6.exchangerate-api.com/v6/${api_key}/pair/${currencyNameFrom.textContent}/${currencyNameTo.textContent}/${amount}`;
   fetch(url)
-    .then((response) => response.json())
-    .then((result) => {
+    .then(response => response.json())
+    .then(result => {
       exchangeRate.value = result.conversion_result.toFixed(2);
     })
     .catch(() => {
@@ -200,13 +172,13 @@ function getExchangeRate() {
     });
 }
 
-amount.addEventListener("keypress", (event) => {
+amount.addEventListener("keypress", event => {
   if (event.key === "Enter") {
     getExchangeRate();
   }
 });
 
-convertButton.addEventListener("click", (e) => {
+convertButton.addEventListener("click", e => {
   e.preventDefault();
   getExchangeRate();
 });
